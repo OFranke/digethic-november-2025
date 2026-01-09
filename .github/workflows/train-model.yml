@@ -18,7 +18,7 @@ jobs:
       - run: python src/train.py
         name: Train Model
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v6
         name: Upload trained model
         with:
           name: baummethoden_lr.pickle
