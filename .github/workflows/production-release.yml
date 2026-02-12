@@ -8,7 +8,7 @@ jobs:
   train-model:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Switch to heroku branch
         shell: bash
         run: |
@@ -18,13 +18,13 @@ jobs:
           git checkout heroku 2>/dev/null || git checkout -b heroku
           git merge main -X theirs --allow-unrelated-histories
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: "3.9"
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Train model
-        run: python train.py
+        run: python src/train.py
       - name: Upload trained model
         uses: actions/upload-artifact@v4
         with:
