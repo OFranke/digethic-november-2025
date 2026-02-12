@@ -4,11 +4,16 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   train-model:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Switch to heroku branch
         shell: bash
         run: |
